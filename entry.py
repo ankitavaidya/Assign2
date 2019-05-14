@@ -10,12 +10,12 @@ from mysql.connector import errorcode
 def insertInTable(username,password):
     try:
         connection = mysql.connector.connect(host='localhost',
-                             database='python_db',
-                             user='pynative',
-                             password='pynative@#29')
+                             database='sample',
+                             user='root',
+                             password='root')
         cursor = connection.cursor(prepared=True)
-        sql_insert_query = """ INSERT INTO `python_users`
-                          (`id`, `name`, `birth_date`, `age`) VALUES (%s,%s,%s,%s)"""
+        sql_insert_query = """ INSERT INTO `register`
+                          (`username`, `password`) VALUES (%s,%s)"""
         insert_tuple = (username, password)
         result  = cursor.execute(sql_insert_query, insert_tuple)
         connection.commit()
